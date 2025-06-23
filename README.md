@@ -7,7 +7,7 @@
 This project implements an advanced object detection system for space station environments using YOLOv8. The model is specifically trained to identify critical equipment aboard space stations: `FireExtinguisher`, `ToolBox`, and `OxygenTank` - all essential for astronaut safety and operational efficiency.
 
 
-[Google Collab URL](https://colab.research.google.com/drive/1Lp5yLOB8vDngR0G8Emk6p7YAnlEwQCbp?usp=sharing) 
+[Google Collab URL](https://colab.research.google.com/drive/1X74FUMYBhxSpbf7qEGIdXQlU-Q5alBzA?usp=sharing) 
 ## Project Overview
 
 Space station environments present unique challenges for object detection systems:
