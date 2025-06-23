@@ -1,0 +1,45 @@
+# YOLOv8 Training & Inference Configuration
+
+# Dataset Configuration
+path: data                                 # Path to data directory
+train: data/train                          # Path to training data
+val: data/val                              # Path to validation data
+test: data/test                            # Path to test data
+
+# Classes
+names:
+  - FireExtinguisher                       # Class 0
+  - ToolBox                                # Class 1
+  - OxygenTank                             # Class 2
+
+# Training Parameters
+model: yolov8s.pt                          # Base model to start from
+epochs: 20                                 # Number of training epochs
+batch: 16                                  # Batch size
+imgsz: 640                                 # Image size
+lr0: 0.01                                  # Initial learning rate
+lrf: 0.01                                  # Final learning rate factor
+optimizer: 'Adam'                          # Optimizer [SGD, Adam, AdamW]
+weight_decay: 0.0005                       # Weight decay
+momentum: 0.937                            # SGD momentum
+warmup_epochs: 3                           # Warmup epochs
+warmup_momentum: 0.8                       # Warmup momentum
+save_period: 5                             # Save checkpoint every X epochs
+
+# Augmentation
+augment: True                              # Use augmentation
+hsv_h: 0.015                               # HSV-Hue augmentation
+hsv_s: 0.7                                 # HSV-Saturation augmentation
+hsv_v: 0.4                                 # HSV-Value augmentation
+fliplr: 0.5                                # Horizontal flip probability
+flipud: 0.0                                # Vertical flip probability
+rotate: 0.0                                # Rotation augmentation
+scale: 0.5                                 # Scale augmentation
+translate: 0.1                             # Translation augmentation
+
+# Output settings
+project: runs/                             # Save to runs/
+name: exp_space                            # Project name
+exist_ok: True                             # Overwrite existing project
+save: True                                 # Save train checkpoints
+device:                                    # Device ('' for auto, '0' for GPU:0)
