@@ -184,7 +184,7 @@ To achieve the best performance, we employ:
 - Hyperparameter tuning via configuration files
 - Class-specific confidence thresholds
 - Non-Maximum Suppression optimization
-- Cross-validation for model selection
+
 
 ## Challenges and Solutions
 
