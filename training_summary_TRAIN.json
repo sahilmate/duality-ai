@@ -1,0 +1,16 @@
+{
+    "date": "2025-06-24 15:44:16",
+    "config_file": "/content/drive/.shortcut-targets-by-id/1i2Se4cR2JTtjkgrs5Uehmr-6O43Vv1EK/HackByte_Dataset/yolo_params.yaml",
+    "epochs": 100,
+    "image_size": 640,
+    "batch_size": 16,
+    "learning_rate": 0.01,
+    "model_type": "yolov8l.pt",
+    "metrics": {
+        "mAP50": 0.9457238130377359,
+        "mAP50-95": 0.790720529898675,
+        "precision": 0.9889155675444928,
+        "recall": 0.8801698458578997,
+        "F1": 0.9313792258082575
+    }
+}
