@@ -142,6 +142,19 @@ def create_performance_viz(this_dir, class_names, output_dir):
     # Read results
     try:
         results_df = pd.read_csv(results_path)
+        # Rename columns for compatibility with updated Ultralytics metrics
+        column_renames = {
+          'metrics/mAP50(B)': 'mAP50',
+          'metrics/mAP50-95(B)': 'mAP50-95',
+          'metrics/precision(B)': 'precision',
+          'metrics/recall(B)': 'recall',
+          'train/box_loss': 'box_loss',
+          'train/cls_loss': 'cls_loss',
+          'train/dfl_loss': 'dfl_loss',
+          'lr/pg0': 'lr0'
+        }
+        results_df.rename(columns={k: v for k, v in column_renames.items() if k in results_df.columns}, inplace=True)
+
 
         # 1. Create training curves
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))

@@ -1,45 +1,58 @@
-# YOLOv8 Training & Inference Configuration
+# Dataset paths
+train: data/train/images
+val: data/val/images
+test: data/test
+nc: 3
+names: ['FireExtinguisher', 'ToolBox', 'OxygenTank']
 
-# Dataset Configuration
-path: data                                 # Path to data directory
-train: data/train                          # Path to training data
-val: data/val                              # Path to validation data
-test: data/test                            # Path to test data
+# Training hyperparameters
+model: yolov8l.pt  # Using YOLOv8 Large model for better accuracy
+imgsz: 640
+batch: 16
+epochs: 100
+patience: 50  # Early stopping patience
 
-# Classes
-names:
-  - FireExtinguisher                       # Class 0
-  - ToolBox                                # Class 1
-  - OxygenTank                             # Class 2
+# Learning rate settings
+lr0: 0.01
+lrf: 0.01  # Final learning rate (fraction of lr0)
+momentum: 0.937
+weight_decay: 0.0005
 
-# Training Parameters
-model: yolov8s.pt                          # Base model to start from
-epochs: 20                                 # Number of training epochs
-batch: 16                                  # Batch size
-imgsz: 640                                 # Image size
-lr0: 0.01                                  # Initial learning rate
-lrf: 0.01                                  # Final learning rate factor
-optimizer: 'Adam'                          # Optimizer [SGD, Adam, AdamW]
-weight_decay: 0.0005                       # Weight decay
-momentum: 0.937                            # SGD momentum
-warmup_epochs: 3                           # Warmup epochs
-warmup_momentum: 0.8                       # Warmup momentum
-save_period: 5                             # Save checkpoint every X epochs
+# Augmentation settings
+mosaic: 1.0  # Mosaic augmentation (0-1)
+mixup: 0.1   # Mixup augmentation (0-1)
+copy_paste: 0.1  # Copy-paste augmentation (0-1)
+degrees: 10.0  # Rotation augmentation
+translate: 0.2  # Translation augmentation
+scale: 0.5    # Scale augmentation
+shear: 2.0    # Shear augmentation
+perspective: 0.0001  # Perspective augmentation
+flipud: 0.5   # Vertical flip augmentation
+fliplr: 0.5   # Horizontal flip augmentation
 
-# Augmentation
-augment: True                              # Use augmentation
-hsv_h: 0.015                               # HSV-Hue augmentation
-hsv_s: 0.7                                 # HSV-Saturation augmentation
-hsv_v: 0.4                                 # HSV-Value augmentation
-fliplr: 0.5                                # Horizontal flip probability
-flipud: 0.0                                # Vertical flip probability
-rotate: 0.0                                # Rotation augmentation
-scale: 0.5                                 # Scale augmentation
-translate: 0.1                             # Translation augmentation
+# HSV augmentation
+hsv_h: 0.015  # Hue augmentation
+hsv_s: 0.7    # Saturation augmentation
+hsv_v: 0.4    # Value augmentation
 
-# Output settings
-project: runs/                             # Save to runs/
-name: exp_space                            # Project name
-exist_ok: True                             # Overwrite existing project
-save: True                                 # Save train checkpoints
-device:                                    # Device ('' for auto, '0' for GPU:0)
+# Loss weights
+box: 7.5      # Box loss weight
+cls: 0.5      # Class loss weight
+dfl: 1.5      # Distribution focal loss weight
+
+# Optimizer and training settings
+optimizer: 'auto'  # Optimizer (auto, SGD, Adam, AdamW)
+cos_lr: True       # Use cosine learning rate scheduler
+warmup_epochs: 3   # Warmup epochs
+warmup_momentum: 0.8  # Warmup momentum
+warmup_bias_lr: 0.1   # Warmup bias learning rate
+
+# Inference settings
+nms_conf: 0.25  # NMS confidence threshold
+nms_iou: 0.45   # NMS IoU threshold
+max_det: 300    # Maximum detections per image
+
+# Save settings
+project: runs/
+name: exp_space
+save_period: 10  # Save checkpoint every N epochs
